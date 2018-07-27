@@ -6,6 +6,13 @@
 * Windows Update: KB4340917
 * Docker CE Stable Version: 18.06.0-ce-win72 (19098)
 
+## Installation
+
+* Run windows update to install latest windows updates KB4340917
+* Install Docker CE. restarts computer after installation.
+* Ask to enable windows containers, does so, ask to enable hyper-v and container support.
+* Computer reboots and docker service starts successfully.
+
 ## Windows Container tests
 
 ``` 
