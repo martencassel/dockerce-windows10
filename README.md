@@ -1,5 +1,7 @@
 # dockerce-windows10
 
+
+
 ## Host Setup
 * Machine: Standard D8s v3 (8 vcpus, 32 GB memory)
 * Host OS: Windows 10 1803, 17134.191
@@ -199,6 +201,119 @@ test_frontend.1.w348m7fpb8iz@win10    | Ping request could not find host backend
 test_frontend.1.yxxhbrkdppfp@win10    | Ping request could not find host backend. Please check the name and try again.
 test_frontend.1.vlfg64xorttp@win10    | Ping request could not find host backend. Please check the name and try again.
 
+```
+
+## Setup test swarm DNS resolution
+
+```
+C:\Users\marten>type docker-compose.yml
+version: '3.2'
+
+services:
+  frontend:
+    image: microsoft/nanoserver
+    command: ping 127.0.0.1 /t
+  backend:
+    image: microsoft/nanoserver
+    command: ping 127.0.0.1 /t
+```
+
+```
+PS C:\Users\marten> docker ps
+CONTAINER ID        IMAGE                         COMMAND               CREATED             STATUS              PORTS               NAMES
+ed2e69fedac1        microsoft/nanoserver:latest   "ping 127.0.0.1 /t"   3 minutes ago       Up 3 minutes                            test2_backend.1.703mxsc2b62vgycs0mssr8msh
+10bdabd7a286        microsoft/nanoserver:latest   "ping 127.0.0.1 /t"   3 minutes ago       Up 3 minutes                            test2_frontend.1.jnffccepv2nq49ew435lmobpo
+```
+
+ed2e69fedac1:
+```
+Windows IP Configuration
+
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : ctw2ceifly2ehh5cn5mbuouule.ax.internal.cloudapp.net
+   Link-local IPv6 Address . . . . . : fe80::dda:1cee:5e1e:8b81%4
+   IPv4 Address. . . . . . . . . . . : 10.0.3.6
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.0.3.1
+```
+
+10bdabd7a286
+```
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : ctw2ceifly2ehh5cn5mbuouule.ax.internal.cloudapp.net
+   Link-local IPv6 Address . . . . . : fe80::6cc1:8770:cd7e:d3bd%4
+   IPv4 Address. . . . . . . . . . . : 10.0.3.4
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+```
+
+```
+PS C:\Users\marten> docker inspect test2_default
+[
+    {
+        "Name": "test2_default",
+        "Id": "iukewht4k0kotgdj31op5i9sk",
+        "Created": "2018-07-27T12:10:12.5367641Z",
+        "Scope": "swarm",
+        "Driver": "overlay",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "10.0.3.0/24",
+                    "Gateway": "10.0.3.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "10bdabd7a286336364cf0b58cd9660dd70958d2ecdc14c2887c95f8a4d73402d": {
+                "Name": "test2_frontend.1.jnffccepv2nq49ew435lmobpo",
+                "EndpointID": "70009230fb6d74039a50a12d760c08e03c31f4cc099f704559951788f379a66d",
+                "MacAddress": "00:15:5d:b2:e8:0f",
+                "IPv4Address": "10.0.3.4/24",
+                "IPv6Address": ""
+            },
+            "ed2e69fedac128e4e25a936901d0f5dc52e86723a090da45cce1afb884dd8c8d": {
+                "Name": "test2_backend.1.703mxsc2b62vgycs0mssr8msh",
+                "EndpointID": "1cedab666ce750e926019f3793efc81281cef9d3f5cf3b26d380b467999179a0",
+                "MacAddress": "00:15:5d:b2:e6:97",
+                "IPv4Address": "10.0.3.6/24",
+                "IPv6Address": ""
+            },
+            "lb-test2_default": {
+                "Name": "test2_default-endpoint",
+                "EndpointID": "7ae7921b515490ebe57b6792258690537240cb7cd50bea99f9422fcf6553f06f",
+                "MacAddress": "00:15:5d:b2:e8:0e",
+                "IPv4Address": "10.0.3.2/24",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.driver.overlay.vxlanid_list": "4100",
+            "com.docker.network.windowsshim.hnsid": "986608f7-0e25-4851-9ac3-47014bc7dac0"
+        },
+        "Labels": {
+            "com.docker.stack.namespace": "test2"
+        },
+        "Peers": [
+            {
+                "Name": "65efd0fcb3a1",
+                "IP": "10.0.1.4"
+            }
+        ]
+    }
+]
 ```
 
 ## Expose Port from container
