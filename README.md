@@ -467,3 +467,47 @@ KB4340917
 ## Windows 10 Update history
 
 https://support.microsoft.com/en-ph/help/4099479
+
+## Windows Defender
+
+PS C:\Users\marten> Get-MpComputerStatus
+
+AMEngineVersion                 : 1.1.15100.1
+AMProductVersion                : 4.18.1806.18062
+AMServiceEnabled                : True
+AMServiceVersion                : 4.18.1806.18062
+AntispywareEnabled              : True
+AntispywareSignatureAge         : 0
+AntispywareSignatureLastUpdated : 7/27/2018 7:28:48 AM
+AntispywareSignatureVersion     : 1.273.428.0
+AntivirusEnabled                : True
+AntivirusSignatureAge           : 0
+AntivirusSignatureLastUpdated   : 7/27/2018 7:28:49 AM
+AntivirusSignatureVersion       : 1.273.428.0
+BehaviorMonitorEnabled          : True
+ComputerID                      : 5715EEC8-75F1-436D-B147-10D36399F8A7
+ComputerState                   : 0
+FullScanAge                     : 4294967295
+FullScanEndTime                 :
+FullScanStartTime               :
+IoavProtectionEnabled           : True
+LastFullScanSource              : 0
+LastQuickScanSource             : 0
+NISEnabled                      : True
+NISEngineVersion                : 1.1.15100.1
+NISSignatureAge                 : 0
+NISSignatureLastUpdated         : 7/27/2018 7:28:49 AM
+NISSignatureVersion             : 1.273.428.0
+OnAccessProtectionEnabled       : True
+QuickScanAge                    : 4294967295
+QuickScanEndTime                :
+QuickScanStartTime              :
+RealTimeProtectionEnabled       : True
+RealTimeScanDirection           : 0
+PSComputerName                  :
+
+
+# Disable Real Time Monitoring
+
+> Set-MpPreference -DisableRealtimeMonitoring $true
+
