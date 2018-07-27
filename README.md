@@ -166,6 +166,26 @@ Gracefully stopping... (press Ctrl+C again to force)
 
 ### Docker Swarm
 
+```
+version: '3.2'
+
+services:
+  frontend:
+    image: microsoft/nanoserver
+    command: ping backend /t 
+  backend:
+    image: microsoft/nanoserver
+    command: ping frontend /t
+```
+
+```
+PS C:\Users\marten> docker stack deploy -c .\docker-compose.yml test
+Creating network test_default
+Creating service test_backend
+Creating service test_frontend
+PS C:\Users\marten>
+```
+
 ## Network setup
 
 ```
