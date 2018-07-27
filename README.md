@@ -114,6 +114,58 @@ ID                  NAME                IMAGE                         NODE      
 
 ```
 
+## DNS Resolution tests
+
+### Docker Compose
+
+```
+version: '3.2'
+
+services:
+  frontend:
+    image: microsoft/nanoserver
+    command: ping backend /t 
+  backend:
+    image: microsoft/nanoserver
+    command: ping frontend /t
+```
+
+```
+PS C:\Users\marten> docker-compose up
+WARNING: The Docker Engine you're using is running in swarm mode.
+
+Compose does not use swarm mode to deploy services to multiple nodes in a swarm. All containers will be scheduled on the current node.
+
+To deploy your application across the swarm, use `docker stack deploy`.
+
+Creating network "marten_default" with the default driver
+Creating marten_backend_1  ... done
+Creating marten_frontend_1 ... done
+Attaching to marten_frontend_1, marten_backend_1
+frontend_1  |
+frontend_1  | Pinging backend [172.20.186.66] with 32 bytes of data:
+frontend_1  | Reply from 172.20.186.66: bytes=32 time=2ms TTL=128
+backend_1   |
+backend_1   | Pinging frontend [172.20.187.254] with 32 bytes of data:
+backend_1   | Reply from 172.20.187.254: bytes=32 time<1ms TTL=128
+frontend_1  | Reply from 172.20.186.66: bytes=32 time=1ms TTL=128
+backend_1   | Reply from 172.20.187.254: bytes=32 time=2ms TTL=128
+frontend_1  | Reply from 172.20.186.66: bytes=32 time=1ms TTL=128
+backend_1   | Reply from 172.20.187.254: bytes=32 time=3ms TTL=128
+backend_1   | Reply from 172.20.187.254: bytes=32 time<1ms TTL=128
+frontend_1  | Reply from 172.20.186.66: bytes=32 time<1ms TTL=128
+frontend_1  | Reply from 172.20.186.66: bytes=32 time=1ms TTL=128
+backend_1   | Reply from 172.20.187.254: bytes=32 time=1ms TTL=128
+frontend_1  | Reply from 172.20.186.66: bytes=32 time=11ms TTL=128
+backend_1   | Reply from 172.20.187.254: bytes=32 time<1ms TTL=128
+frontend_1  | Reply from 172.20.186.66: bytes=32 time=21ms TTL=128
+backend_1   | Reply from 172.20.187.254: bytes=32 time=1ms TTL=128
+Gracefully stopping... (press Ctrl+C again to force)
+```
+
+
+### Docker Swarm
+
 ## Network setup
 
 ```
