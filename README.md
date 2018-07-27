@@ -9,6 +9,7 @@
 ## Installation
 
 * Run windows update to install latest windows updates KB4340917
+* Disable cortana: https://gallery.technet.microsoft.com/scriptcenter/How-to-disable-Cortana-on-b44924a4
 * Install Docker CE. restarts computer after installation.
 * Ask to enable windows containers, does so, ask to enable hyper-v and container support.
 * Computer reboots and docker service starts successfully.
