@@ -199,9 +199,34 @@ test_frontend.1.w348m7fpb8iz@win10    | Ping request could not find host backend
 test_frontend.1.yxxhbrkdppfp@win10    | Ping request could not find host backend. Please check the name and try again.
 test_frontend.1.vlfg64xorttp@win10    | Ping request could not find host backend. Please check the name and try again.
 
+```
 
+## Expose Port from container
 
 ```
+docker pull stefanscherer/whoami
+docker run -d -p 8080:8080 --name whoami -t stefanscherer/whoami
+(iwr http://$(docker inspect -f '{{ .NetworkSettings.Networks.nat.IPAddress }}' whoami):8080 -UseBasicParsing).Content
+
+PS C:\Users\marten> (iwr http://$(docker inspect -f '{{ .NetworkSettings.Networks.nat.IPAddress }}' whoami):8080 -UseBasicParsing).Content
+I'm 26afd92eca30 running on windows/amd64
+```
+
+## External port publishing from service
+
+```
+PS C:\Users\marten> docker service create --name=whoami --publish 8080:8080 stefanscherer/whoami
+6q427z7ray9cakbdrvwq348m6
+overall progress: 1 out of 1 tasks
+1/1: running   [==================================================>]
+verify: Service converged
+```
+
+```
+PS C:\Users\marten> (iwr http://137.117.196.184:8080 -UseBasicParsing).Content
+I'm de6fb837b003 running on windows/amd64
+```
+
 ## Network setup
 
 ```
