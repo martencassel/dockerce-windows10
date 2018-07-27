@@ -317,6 +317,11 @@ PS C:\Users\marten> docker inspect test2_default
 ]
 ```
 
+```
+Ping connective works.
+```
+
+
 ## Expose Port from container
 
 ```
