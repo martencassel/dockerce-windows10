@@ -1,7 +1,6 @@
 # dockerce-windows10
 
 
-
 ## Host Setup
 * Machine: Standard D8s v3 (8 vcpus, 32 GB memory)
 * Host OS: Windows 10 1803, 17134.191
