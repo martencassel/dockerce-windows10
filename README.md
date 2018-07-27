@@ -517,3 +517,48 @@ PSComputerName                  :
 
 # Cleanup
 https://github.com/W4RH4WK/Debloat-Windows-10
+
+
+# Swarm stack  
+
+### DNS Resolution fails.
+```
+version: '3.2'
+
+services:
+  frontend:
+    image: microsoft/nanoserver
+    deploy:
+      endpoint_mode: dnsrr
+    command: ping 127.0.0.1 /t 
+  backend:
+    image: microsoft/nanoserver
+    deploy:
+      endpoint_mode: dnsrr
+    command: ping 127.0.0.1 /t 
+
+networks:
+  overlay:
+```
+
+
+
+### DNS Resolution fails.
+```
+version: '3.2'
+
+services:
+  frontend:
+    image: microsoft/nanoserver
+    deploy:
+      endpoint_mode: dnsrr
+    command: ping 127.0.0.1 /t 
+  backend:
+    image: microsoft/nanoserver
+    deploy:
+      endpoint_mode: dnsrr
+    command: ping 127.0.0.1 /t 
+
+networks:
+  overlay:
+```
