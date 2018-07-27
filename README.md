@@ -98,6 +98,22 @@ Insecure Registries:
 Live Restore Enabled: false
 ```
 
+```
+PS C:\Users\marten> docker service create --name=test microsoft/nanoserver ping 127.0.0.1 /t
+bf04o3dpg9xpwqdpwq81spxa1
+overall progress: 1 out of 1 tasks
+1/1: running   [==================================================>]
+verify: Service converged
+
+PS C:\Users\marten> docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                         PORTS
+bf04o3dpg9xp        test                replicated          1/1                 microsoft/nanoserver:latest
+PS C:\Users\marten> docker service ps test
+ID                  NAME                IMAGE                         NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
+24q827gwpki4        test.1              microsoft/nanoserver:latest   win10               Running             Running about a minute ago
+
+```
+
 ## Network setup
 
 ```
