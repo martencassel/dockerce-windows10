@@ -463,3 +463,7 @@ KB4338832
 KB4343669
 KB4340917
 ```
+
+## Windows 10 Update history
+
+https://support.microsoft.com/en-ph/help/4099479
