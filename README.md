@@ -514,3 +514,6 @@ PSComputerName                  :
 ```
  Set-MpPreference -DisableRealtimeMonitoring $true -RealTimeScanDirection $true
 ```
+
+# Cleanup
+https://github.com/W4RH4WK/Debloat-Windows-10
