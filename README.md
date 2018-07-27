@@ -470,6 +470,7 @@ https://support.microsoft.com/en-ph/help/4099479
 
 ## Windows Defender
 
+```
 PS C:\Users\marten> Get-MpComputerStatus
 
 AMEngineVersion                 : 1.1.15100.1
@@ -505,6 +506,7 @@ QuickScanStartTime              :
 RealTimeProtectionEnabled       : True
 RealTimeScanDirection           : 0
 PSComputerName                  :
+```
 
 
 # Disable Real Time Monitoring
