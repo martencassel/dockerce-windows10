@@ -307,3 +307,13 @@ PS C:\Users\marten>
 
 
 ```
+
+### KBS
+
+```
+PS C:\Users\marten> Get-WmiObject -query 'select * from win32_quickfixengineering' | foreach {$_.hotfixid}
+KB4230204
+KB4338832
+KB4343669
+KB4340917
+```
