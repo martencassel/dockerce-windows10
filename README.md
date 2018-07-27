@@ -247,6 +247,7 @@ Ethernet adapter Ethernet:
    Link-local IPv6 Address . . . . . : fe80::6cc1:8770:cd7e:d3bd%4
    IPv4 Address. . . . . . . . . . . : 10.0.3.4
    Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.0.3.1
 ```
 
 ```
