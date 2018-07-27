@@ -276,3 +276,34 @@ Insecure Registries:
  127.0.0.0/8
 Live Restore Enabled: false
 ```
+
+## Compute Processes are HyperV
+
+```
+PS C:\Users\marten>  get-computeprocess | ? { $_.Owner -eq "docker" }
+
+
+Id                : 6114e0099b396cc82ec6fc393dbf16114ec8710f2654872eb7cff4b30af12c62
+Type              : Container
+Isolation         : HyperV
+IsTemplate        : False
+RuntimeId         : dd5721ea-0684-49d2-9e48-c0d645d29e36
+RuntimeTemplateId : 6BDDD4E3-D0E4-44DF-BE4E-A318B4A0FB82
+RuntimeImagePath  : C:\ProgramData\Docker\windowsfilter\53e736d2f48446814c1c2d22409eceacd380cb4fe5960564304ee967a83e3384\UtilityVM
+Owner             : docker
+
+Id                : c442f20f2c977aef0346372e48445a1de1ac7efd71de58976768a490977be1a2
+Type              : Container
+Isolation         : HyperV
+IsTemplate        : False
+RuntimeId         : 7f5e0477-810e-482a-8315-5f60e695661d
+RuntimeTemplateId : 6BDDD4E3-D0E4-44DF-BE4E-A318B4A0FB82
+RuntimeImagePath  : C:\ProgramData\Docker\windowsfilter\53e736d2f48446814c1c2d22409eceacd380cb4fe5960564304ee967a83e3384\UtilityVM
+Owner             : docker
+
+
+
+PS C:\Users\marten>
+
+
+```
