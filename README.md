@@ -23,6 +23,10 @@ docker run -d microsoft/nanoserver ping 127.0.0.1 /t
 OK
 ```
 
+```
+docker swarm init --advertise-addr 10.0.1.4
+```
+
 ## Network setup
 
 ```
