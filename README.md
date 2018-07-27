@@ -561,3 +561,22 @@ services:
 networks:
   overlay:
 ```
+
+```
+version: '3.2'
+
+services:
+  frontend:
+    image: microsoft/nanoserver:1803
+    deploy:
+      endpoint_mode: dnsrr
+    command: ping 127.0.0.1 /t 
+  backend:dockrd
+    image: microsoft/nanoserver:1803
+    deploy:
+      endpoint_mode: dnsrr
+    command: ping 127.0.0.1 /t 
+
+networks:
+  overlay:
+```
