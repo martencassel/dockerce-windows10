@@ -186,6 +186,22 @@ Creating service test_frontend
 PS C:\Users\marten>
 ```
 
+```
+PS C:\Users\marten> docker service logs -f test_backend
+test_backend.1.wzdrqabitj6e@win10    | Ping request could not find host frontend. Please check the name and try again.
+test_backend.1.v3t2k6rxy7t9@win10    | Ping request could not find host frontend. Please check the name and try again.
+test_backend.1.uyp8hyv21ln2@win10    | Ping request could not find host frontend. Please check the name and try again.
+test_backend.1.uvakv6zbwfo4@win10    | Ping request could not find host frontend. Please check the name and try again.
+PS C:\Users\marten> docker service logs -f test_frontend
+test_frontend.1.oamkvlq8pwrc@win10    | Ping request could not find host backend. Please check the name and try again.
+test_frontend.1.xb5ny2amdcrn@win10    | Ping request could not find host backend. Please check the name and try again.
+test_frontend.1.w348m7fpb8iz@win10    | Ping request could not find host backend. Please check the name and try again.
+test_frontend.1.yxxhbrkdppfp@win10    | Ping request could not find host backend. Please check the name and try again.
+test_frontend.1.vlfg64xorttp@win10    | Ping request could not find host backend. Please check the name and try again.
+
+
+
+```
 ## Network setup
 
 ```
