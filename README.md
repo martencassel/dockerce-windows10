@@ -512,5 +512,5 @@ PSComputerName                  :
 # Disable Real Time Monitoring
 
 ```
- Set-MpPreference -DisableRealtimeMonitoring $true
+ Set-MpPreference -DisableRealtimeMonitoring $true -RealTimeScanDirection $true
 ```
